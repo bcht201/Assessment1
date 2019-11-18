@@ -30,11 +30,14 @@ h2 {
   font-size: 36px;
 }
 
+/* Set width: 100% to span across page, then shifted text to right corner with text-align */
 footer {
   display: block;
   position: fixed;
   bottom: 0;
   font-size: 12px;
+  width: 100%;
+  text-align: right;
 }
 
 p {
