@@ -21,9 +21,10 @@ quotes = [
   '"A learning curve is essential to growth." <br> –Tammy Bjelland'
 ];
 
+//Changed return value from fixed value to random index for random functionality
 function getRandomQuote() {
   index = Math.floor(Math.random() * quotes.length);
-  return quotes[4];
+  return quotes[index];
 }
 
 app.use(cors());
@@ -33,20 +34,26 @@ app.get("/", (req, res) => res.send("index"));
 
 // write route to get all quotes below this line
 
-// (insert your code here)
+app.get("/quotes", (req, res) => res.send(quotes));
 
 //---------------------------
 
 // write route to get a random quote below this line
 
-// (insert your code here)
+app.get("/quotes/random", (req, res) => res.send(getRandomQuote()));
 
 //---------------------------
 
 // make sure route can handle errors if index is out of range
 
-app.get("/quotes/:index", (req, res) => res.send(quotes[req.params.index]));
-
+// Changed index call to index - 1 to match gif call of 1 == first quote == quotes[0]
+//Ternary operator to check req params, error message thrown if > 15 || < 1
+app.get("/quotes/:index", (req, res) => {
+  const indexNum = req.params.index;
+  indexNum > quotes.length || indexNum < 1 ? 
+    res.send({error: "Choose a number between 1 and 15"}) :
+    res.send(quotes[req.params.index - 1]);
+});
 //---------------------------
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));
