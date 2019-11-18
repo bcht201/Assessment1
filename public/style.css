@@ -21,20 +21,21 @@ section {
   font-family: "Quicksand", sans-serif;
 }
 
-h1 {
-  display: hidden;
-}
+/* Removed h1 css because h1 has no value and will display nothing anyways */
 
 h2 {
   font-family: "Dancing Script", cursive;
   font-size: 36px;
 }
 
+/* Set width: 100% to span across page, then shifted text to right corner with text-align */
 footer {
-  display: block;
+/* Footer by default is display:block */
   position: fixed;
   bottom: 0;
   font-size: 12px;
+  width: 100%;
+  text-align: right;
 }
 
 p {
