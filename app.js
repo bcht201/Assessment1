@@ -40,7 +40,9 @@ app.get("/quotes", (req, res) => res.send(quotes));
 
 // write route to get a random quote below this line
 
+//get request to test on browser, post request for script to run
 app.get("/quotes/random", (req, res) => res.send(getRandomQuote()));
+app.post("/", (req,res) => res.send(getRandomQuote()));
 
 //---------------------------
 
