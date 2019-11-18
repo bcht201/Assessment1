@@ -9,6 +9,7 @@
 $(document).ready(() =>{
   $("form").submit(event => {
     event.preventDefault();
+    // needed to change the post for a get to your random quotes route.
     axios.post("").then(response => {
       quote = response.data;
       $("h1").css({

@@ -32,21 +32,12 @@ app.use(express.static("public"));
 
 app.get("/", (req, res) => res.send("index"));
 
-// write route to get all quotes below this line
-
 app.get("/quotes", (req, res) => res.send(quotes));
 
-//---------------------------
-
-// write route to get a random quote below this line
-
-//get request to test on browser, post request for script to run
 app.get("/quotes/random", (req, res) => res.send(getRandomQuote()));
-app.post("/", (req,res) => res.send(getRandomQuote()));
 
-//---------------------------
-
-// make sure route can handle errors if index is out of range
+// this should have been implemented using script.js => see comments there. 
+app.post("/", (req, res) => res.send(getRandomQuote()));
 
 // Changed index call to index - 1 to match gif call of 1 == first quote == quotes[0]
 //Ternary operator to check req params, error message thrown if > 15 || < 1
@@ -56,6 +47,5 @@ app.get("/quotes/:index", (req, res) => {
     res.send({error: "Choose a number between 1 and 15"}) :
     res.send(quotes[req.params.index - 1]);
 });
-//---------------------------
 
-app.listen(port, () => console.log(`Example app listening on port ${port}!`));
+app.listen(port, () => console.log(`Quotes app listening on port ${port}!`));
